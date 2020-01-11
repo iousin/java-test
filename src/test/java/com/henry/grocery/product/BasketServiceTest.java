@@ -47,4 +47,12 @@ public class BasketServiceTest {
         assertEquals("Item quantity must be updated", 4, item.getQuantity());
     }
 
+    @Test
+    public void checkoutCalculatesBasketTotal() {
+        basket = basketService.addItem(basket, "soup", 3);
+        basket = basketService.addItem(basket, "milk", 1);
+        basket = basketService.checkout(basket);
+
+        assertEquals("Basket total must be set after checkout ", 3.25D, basket.getTotal(), 0.0D);
+    }
 }

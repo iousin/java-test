@@ -19,4 +19,13 @@ public class BasketService {
         return new Basket(new HashMap<Product, Item>(basket.getItems()));
     }
 
+    public Basket checkout(Basket basket) {
+        double basketTotal = calculateBasketTotal(basket);
+        return new Basket(basket.getItems(), basketTotal);
+    }
+
+    private double calculateBasketTotal(Basket basket) {
+        double basketTotal = basket.getItemsList().stream().reduce(0.0D, (itemTotal, item) -> itemTotal + item.getTotal(), Double::sum);
+        return basketTotal;
+    }
 }
