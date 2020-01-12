@@ -67,6 +67,7 @@ public class CommandLineClient {
         LocalDateTime checkoutDate = LocalDateTime.now().plusDays(checkoutDay);
         basket = basketService.checkout(basket, checkoutDate);
         printBasketState();
+        resetBasket();
     }
 
     private void resetBasket() {
