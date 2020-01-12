@@ -16,6 +16,7 @@ public class BasketServiceTest {
 
     private ProductService productService;
     private PromotionService promotionService;
+    private BasketPromotionService basketPromotionService;
     private BasketService basketService;
     private Basket basket;
 
@@ -24,7 +25,8 @@ public class BasketServiceTest {
         basket = new Basket();
         productService = new ProductService();
         promotionService = new PromotionService();
-        basketService = new BasketService(productService, promotionService);
+        basketPromotionService = new BasketPromotionService(promotionService);
+        basketService = new BasketService(productService, basketPromotionService);
     }
 
     @Test

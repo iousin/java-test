@@ -1,5 +1,6 @@
 package com.henry.grocery;
 
+import com.henry.grocery.basket.BasketPromotionService;
 import com.henry.grocery.basket.BasketService;
 import com.henry.grocery.console.CommandLineClient;
 import com.henry.grocery.product.ProductService;
@@ -19,7 +20,8 @@ public class GroceryApplication {
 
         setupPromotions(promotionService);
 
-        BasketService basketService = new BasketService(productService, promotionService);
+        BasketPromotionService basketPromotionService = new BasketPromotionService(promotionService);
+        BasketService basketService = new BasketService(productService, basketPromotionService);
 
         CommandLineClient commandLineClient = new CommandLineClient(basketService);
         commandLineClient.startCommandLineInterface();
