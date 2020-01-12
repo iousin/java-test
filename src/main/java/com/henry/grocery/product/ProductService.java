@@ -22,7 +22,7 @@ public class ProductService {
     public Product findByName(String name) {
         Product product = AVAILABLE_PRODUCTS.get(name);
         if (product == null) {
-            throw new ProductNotFoundException(String.format("Product with %s not found", name));
+            throw new ProductNotFoundException(String.format("Product with name (%s) not found", name));
         }
 
         return product;
