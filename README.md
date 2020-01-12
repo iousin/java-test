@@ -6,10 +6,10 @@ A gradle wrapper is provided. To run the application following can be executed f
 After running the above following options will be printed on screen and are available:
 
 ```$xslt
-Please enter one of the following
+Please enter one of the following options followed by an Enter Key:
 <product name> <quantity> - e.g, apples 5
-checkout <day> - The day on which to checkout 0 is today 1 is tomorrow and so on
-reset - To clear basket
+checkout <day> - The day on which to checkout. 0 is today, 1 is tomorrow and so on
+reset - To clear basket and start over
 exit - To close the application and exit
 ```
 
