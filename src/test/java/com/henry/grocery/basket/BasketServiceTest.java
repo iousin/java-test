@@ -1,11 +1,12 @@
 package com.henry.grocery.basket;
 
-import com.henry.grocery.basket.Basket;
-import com.henry.grocery.basket.BasketService;
-import com.henry.grocery.basket.Item;
 import com.henry.grocery.product.ProductService;
+import com.henry.grocery.promotion.ProductPromotion;
+import com.henry.grocery.promotion.PromotionService;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -13,6 +14,7 @@ import static org.junit.Assert.assertNotNull;
 public class BasketServiceTest {
 
     private ProductService productService;
+    private PromotionService promotionService;
     private BasketService basketService;
     private Basket basket;
 
@@ -20,7 +22,8 @@ public class BasketServiceTest {
     public void setup() {
         basket = new Basket();
         productService = new ProductService();
-        basketService = new BasketService(productService);
+        promotionService = new PromotionService();
+        basketService = new BasketService(productService, promotionService);
     }
 
     @Test
@@ -55,5 +58,15 @@ public class BasketServiceTest {
         basket = basketService.checkout(basket);
 
         assertEquals("Basket total must be set after checkout ", 3.25D, basket.getTotal(), 0.0D);
+    }
+
+    @Test
+    public void singleProductPromotionIsApplied() {
+        promotionService.addPromotion(new ProductPromotion("apples", LocalDateTime.now().minusMinutes(1), LocalDateTime.now().plusDays(7), 0.10D, 1));
+        basket = basketService.addItem(basket, "bread", 1);
+        basket = basketService.addItem(basket, "apples", 10);
+        basket = basketService.checkout(basket, LocalDateTime.now().plusDays(2));
+
+        assertEquals("Basket total must be set after adjusting promotion discount ", 1.70D, basket.getTotal(), 0.0D);
     }
 }
