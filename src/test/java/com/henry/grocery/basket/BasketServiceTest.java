@@ -1,8 +1,9 @@
-package com.henry.grocery.product;
+package com.henry.grocery.basket;
 
 import com.henry.grocery.basket.Basket;
 import com.henry.grocery.basket.BasketService;
 import com.henry.grocery.basket.Item;
+import com.henry.grocery.product.ProductService;
 import org.junit.Before;
 import org.junit.Test;
 
