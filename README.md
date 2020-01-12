@@ -1,55 +1,55 @@
-# Java Exercise
+# Running Application
+A gradle wrapper is provided. To run the application following can be executed from the java-test directory. 
 
-This is a simple exercise to allow you to demostrate your software engineering skillset. It's completly up to you how long you give yourself, stop when you're happy with the quality of your work, but we don't expect it to take too long.
+`./gradlew run`
 
-## Instructions
-  1. Please fork this repository and work on your fork.
-     _https://help.github.com/en/articles/fork-a-repo_
-  2. Commit changes frequently so that we can review your progression with you later.
-     _https://crealytics.com/blog/5-reasons-keeping-git-commits-small/_
-  3. You should use a recognised build tool, e.g. _gradle_, _maven_...
-  4. We are currently using [open JDK 8u181](https://cdn.azul.com/zulu/bin/zulu8.31.0.1-jdk8.0.181-win_x64.msi). But please use the JDK you think is most appropriate to demonstrate your skillset. 
-  5. We don't expect 100% code coverage, we expect well tested code.
-     _https://medium.com/@nicklee1/why-test-code-coverage-targets-are-a-bad-idea-1b9b8ef711ef_
-  6. Any other tools or libraries used must be freely available. Any third-party jars must be accessible via [maven central](https://mvnrepository.com/repos/central).
-  7. The specification is below.
-  
-## Specification
+After running the above following options will be printed on screen and are available:
 
-A local shop, Henry’s Grocery, has asked you to author an IT solution for them to price up a basket of shopping for their customers.
+```$xslt
+Please enter one of the following
+<product name> <quantity> - e.g, apples 5
+checkout <day> - The day on which to checkout 0 is today 1 is tomorrow and so on
+reset - To clear basket
+exit - To close the application and exit
+```
 
-Henry’s Grocery, currently only stocks four items and has two promotions. These are as follows:
+To add a product simply enter product name followed by the quantity and press enter.
 
-### Stock Items
-        
-|  **product** | **unit**   | **cost** |
-| :---  | :---: | :---: |
-|  soup    | tin    | 0.65 |
-|  bread   | loaf   | 0.80 |
-|  milk    | bottle | 1.30 |
-|  apples  | single | 0.10 |
+`apples 3` (Then hit Enter)
 
-### Discounts
+A message will be printed 
+
+`apples with quantity 3 added successfully`
+
+More products can be added 
+
+`soup 2` (Enter)
+
+`soup with quantity 2 added successfully`
+
+`bread 1` (Enter)
+
+`bread with quantity 1 added successfully`
+
+To checkout just enter checkout followed by the day you wish to checkout. Day 0 is today, 1 is tomorrow and so on.
+
+`checkout 5` (Enter)
+
+Basket cost will be printed.
  
-| **the offer**| **valid from** | **valid to** | 
-| :---     | :---: | :---: |    
-| Buy 2 tins of soup and get a loaf of bread half price | yesterday | for 7 days |
-| Apples have a 10% discount | from 3 days hence | until the end of the following month |
+```$xslt
+Total cost of basket is 1.97
+Basket has been reset successfully
+```
 
-### Inputs
- All basket items added via the command prompt.
+# To reset the basket and start over
 
-### Outputs
-All outputs must print to the command line.
-     
-### Tests
-   - Price a basket containing: 3 tins of soup and 2 loaves of bread, bought today, 
-     - Expected total cost = 3.15;
-   - Price a basket containing: 6 apples and a bottle of milk, bought today, 
-     - Expected total cost = 1.90;
-   - Price a basket containing: 6 apples and a bottle of milk, bought in 5 days time,
-     - Expected total cost = 1.84;
-   - Price a basket containing: 3 apples, 2 tins of soup and a loaf of bread, bought in 5 days time,
-     - Expected total cost = 1.97.
- 
- 
+`reset` 
+
+# To quit application
+
+`exit` Followed by Enter
+
+or 
+
+Ctrl + C 
