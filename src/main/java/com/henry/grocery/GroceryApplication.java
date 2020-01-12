@@ -27,7 +27,7 @@ public class GroceryApplication {
 
     private static void setupPromotions(PromotionService promotionService) {
         promotionService.addPromotion(
-                new ProductPromotion("apples", LocalDateTime.now().plusDays(3), LocalDateTime.now().plusMonths(1).with(lastDayOfMonth()), 0.10D, 1)
+                new ProductPromotion("apples", LocalDateTime.now().plusDays(3), LocalDateTime.now().plusMonths(1).with(lastDayOfMonth()), 0.10D)
         );
         promotionService.addPromotion(
                 new MultiProductPromotion("bread", "soup", LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(6), 0.50D, 2)

@@ -65,6 +65,7 @@ public class BasketService {
         if (!optionalLinkedItem.isPresent()) {
             return item.getTotal();
         }
+
         Item linkedItem = optionalLinkedItem.get();
         int qualifiedQuantityForDiscount = linkedItem.getQuantity() / multiProductPromotion.getQualifyingQuantity();
         double discountRate = multiProductPromotion.getDiscount();

@@ -8,14 +8,12 @@ public class ProductPromotion {
     private final LocalDateTime validFrom;
     private final LocalDateTime validTill;
     private final double discount;
-    private final int qualifyingQuantity;
 
-    public ProductPromotion(String productName, LocalDateTime validFrom, LocalDateTime validTill, double discount, int qualifyingQuantity) {
+    public ProductPromotion(String productName, LocalDateTime validFrom, LocalDateTime validTill, double discount) {
         this.productName = productName;
         this.validFrom = validFrom;
         this.validTill = validTill;
         this.discount = discount;
-        this.qualifyingQuantity = qualifyingQuantity;
     }
 
     public String getProductName() {
@@ -32,9 +30,5 @@ public class ProductPromotion {
 
     public double getDiscount() {
         return discount;
-    }
-
-    public int getQualifyingQuantity() {
-        return qualifyingQuantity;
     }
 }

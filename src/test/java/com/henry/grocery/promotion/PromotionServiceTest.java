@@ -21,7 +21,7 @@ public class PromotionServiceTest {
 
         LocalDateTime applesPromotionStartDate = LocalDateTime.now().plusDays(3);
         LocalDateTime applesPromotionEndDate = LocalDateTime.now().plusMonths(1).with(lastDayOfMonth());
-        ProductPromotion applesPromotion = new ProductPromotion("apple", applesPromotionStartDate, applesPromotionEndDate, 0.10D, 1);
+        ProductPromotion applesPromotion = new ProductPromotion("apple", applesPromotionStartDate, applesPromotionEndDate, 0.10D);
 
         promotionService.addPromotion(applesPromotion);
     }

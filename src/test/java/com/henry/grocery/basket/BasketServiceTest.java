@@ -63,7 +63,7 @@ public class BasketServiceTest {
 
     @Test
     public void singleProductPromotionIsApplied() {
-        promotionService.addPromotion(new ProductPromotion("apples", LocalDateTime.now().minusMinutes(1), LocalDateTime.now().plusDays(7), 0.10D, 1));
+        promotionService.addPromotion(new ProductPromotion("apples", LocalDateTime.now().minusMinutes(1), LocalDateTime.now().plusDays(7), 0.10D));
         basket = basketService.addItem(basket, "bread", 1);
         basket = basketService.addItem(basket, "apples", 10);
         basket = basketService.checkout(basket, LocalDateTime.now().plusDays(2));
