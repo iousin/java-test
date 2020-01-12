@@ -28,7 +28,7 @@ public class CommandLineClient {
             try {
                 processCommand(command);
             } catch (Exception ex) {
-                System.out.printf("An error occured while processing command - %s%n", ex.getMessage());
+                System.out.printf("An error occurred while processing command - %s%n", ex.getMessage());
                 printUsage();
             }
         }
@@ -47,10 +47,10 @@ public class CommandLineClient {
     }
 
     private void printUsage() {
-        System.out.println("Please enter one of the following");
+        System.out.println("Please enter one of the following options followed by an Enter Key:");
         System.out.println("<product name> <quantity> - e.g, apples 5");
-        System.out.println("checkout <day> - The day on which to checkout 0 is today 1 is tomorrow and so on");
-        System.out.println("reset - To clear basket");
+        System.out.println("checkout <day> - The day on which to checkout. 0 is today, 1 is tomorrow and so on");
+        System.out.println("reset - To clear basket and start over");
         System.out.println("exit - To close the application and exit");
     }
 
