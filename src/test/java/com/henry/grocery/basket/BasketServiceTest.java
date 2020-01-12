@@ -1,6 +1,7 @@
 package com.henry.grocery.basket;
 
 import com.henry.grocery.product.ProductService;
+import com.henry.grocery.promotion.MultiProductPromotion;
 import com.henry.grocery.promotion.ProductPromotion;
 import com.henry.grocery.promotion.PromotionService;
 import org.junit.Before;
@@ -69,4 +70,16 @@ public class BasketServiceTest {
 
         assertEquals("Basket total must be set after adjusting promotion discount ", 1.70D, basket.getTotal(), 0.0D);
     }
+
+    @Test
+    public void multiProductPromotionIsApplied() {
+        promotionService.addPromotion(
+                new MultiProductPromotion("bread", "soup", LocalDateTime.now().minusMinutes(1), LocalDateTime.now().plusDays(7), 0.50D, 2));
+        basket = basketService.addItem(basket, "bread", 3);
+        basket = basketService.addItem(basket, "soup", 4);
+        basket = basketService.checkout(basket, LocalDateTime.now().plusDays(5));
+
+        assertEquals("Basket total must be set after adjusting promotion discount ", 4.20D, basket.getTotal(), 0.0D);
+    }
+
 }

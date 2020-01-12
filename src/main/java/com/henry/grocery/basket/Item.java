@@ -1,9 +1,7 @@
 package com.henry.grocery.basket;
 
 import com.henry.grocery.product.Product;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import com.henry.grocery.util.MathUtils;
 
 public class Item {
 
@@ -24,8 +22,14 @@ public class Item {
     }
 
     public double getTotal() {
-        BigDecimal total = new BigDecimal(product.getCost() * quantity);
-        total.setScale(2, RoundingMode.CEILING);
-        return total.doubleValue();
+        return calculateTotal(quantity);
+    }
+
+    public double getTotalFor(int quantityToTotal) {
+        return calculateTotal(quantityToTotal);
+    }
+
+    private double calculateTotal(int quantityToTotal) {
+        return MathUtils.round(product.getCost() * quantityToTotal);
     }
 }
