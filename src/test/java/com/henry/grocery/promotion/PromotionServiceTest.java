@@ -5,9 +5,11 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PromotionServiceTest {
 
@@ -41,4 +43,9 @@ public class PromotionServiceTest {
         assertEquals("Promotions just before expiry date should be returned", 1, promotions.size());
     }
 
+    @Test
+    public void cannotFindActivePromotionByName() {
+        Optional<ProductPromotion> promotions = promotionService.findActivePromotionFor(LocalDateTime.now().plusDays(3).plusHours(1), "apple");
+        assertTrue(promotions.isPresent());
+    }
 }
